@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graduation Invitation - Nguyen Van Hoa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Lobster&family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-image: url('https://res.cloudinary.com/doqkbp2n9/image/upload/v1752140104/20230123_194610_ictm2a.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      transition: background-image 1s ease-in-out;
+    }
+
+    body.submitted {
+      background-image: url('https://res.cloudinary.com/doqkbp2n9/image/upload/v1752143480/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_kdzeca.jpg');
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+      transition: background-color 1s ease-in-out;
+    }
+
+    body.submitted .overlay {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-out;
+    }
+
+    form h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 12px 15px;
+      width: 90%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2ecc71;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+
+    .invitation-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 50px 40px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      display: none;
+      animation: slideIn 1s ease-out;
+      border: 1px solid #e0e0e0;
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invitation-card.show {
+      display: block;
+    }
+
+    .invitation-card .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .invitation-card .greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 24px;
+      color: #34495e;
+    }
+
+    .invitation-card .name {
+      font-size: 22px;
+      font-weight: 600;
+      font-family: 'Roboto', sans-serif;
+      color: #c0392b;
+    }
+
+    .invitation-card .intro-text {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .invitation-card .graduate-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: #8e44ad;
+      margin: 15px 0;
+    }
+
+    .invitation-card .details {
+      margin-top: 20px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .invitation-card .details .label {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .invitation-card .footer {
+      margin-top: 30px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: #2c3e50;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    @keyframes slideIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Flower animation */
+    .flower-effect {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://media.istockphoto.com/id/811987634/vi/anh/hoa-r%C6%A1i-t%E1%BB%AB-b%E1%BA%A7u-tr%E1%BB%9Di-xanh-hoa-frangipani.jpg?s=170667a&w=0&k=20&c=w0VT8OuXiUK0z9nHOtkTnCeT5Hrecrx0XgEQysZ-N0A=');
+      background-size: cover;
+      opacity: 0.9;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(500px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      form, .invitation-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <form id="guestForm">
+      <h2>💌 Enter your name to receive the invitation</h2>
+      <input type="text" id="guestName" placeholder="e.g., Emily Nguyen" required />
+      <br>
+      <button type="submit">Get Invitation</button>
+    </form>
+
+    <div class="invitation-card" id="invitationCard">
+      <div class="flower-effect" id="flowerEffect"></div>
+
+      <h1 class="title">🎓 Graduation Invitation 🎓</h1>
+      <p class="greeting">Cordially Invites</p>
+      <p class="name" id="displayName">Dear Guest</p>
+      <p class="intro-text">To attend the graduation ceremony of</p>
+      <p class="graduate-name">Nguyen Van Hoa</p>
+
+      <div class="details">
+        <p><span class="label">Venue:</span> 33 Xo Viet Nghe Tinh,<br> Hoa Cuong, Da Nang City</p>
+        <p><span class="label">School:</span> Dong A University</p>
+      </div>
+
+      <p class="footer">
+        Your presence will be my greatest honor,<br>
+        <span id="footerName">Dear Guest</span>!
+      </p>
+    </div>
+  </div>
+
+    <!-- 🎵 Audio player -->
+    <audio id="bgMusic" loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  
+    <script>
+      const form = document.getElementById('guestForm');
+      const card = document.getElementById('invitationCard');
+      const input = document.getElementById('guestName');
+      const displayName = document.getElementById('displayName');
+      const footerName = document.getElementById('footerName');
+      const flowerContainer = document.getElementById('flowerEffect');
+      const bgMusic = document.getElementById('bgMusic');
+      const musicControl = document.getElementById('musicControl');
+  
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = input.value.trim();
+        if (name) {
+          displayName.textContent = name;
+          footerName.textContent = name;
+          document.body.classList.add('submitted');
+          card.classList.add('show');
+          form.style.display = 'none';
+          startFlowerEffect();
+          playMusic();
+        }
+      });
+  
+      function startFlowerEffect() {
+        const numFlowers = 25;
+        for (let i = 0; i < numFlowers; i++) {
+          const flower = document.createElement('div');
+          flower.classList.add('flower');
+          flower.style.left = Math.random() * 100 + '%';
+          flower.style.animationDuration = (Math.random() * 3 + 3) + 's';
+          flower.style.animationDelay = Math.random() * 2 + 's';
+          flowerContainer.appendChild(flower);
+        }
+      }
+  
+      function playMusic() {
+        bgMusic.play().then(() => {
+          musicControl.style.display = 'block';
+          musicControl.textContent = '🔊 Pause Music';
+        }).catch(() => {
+          console.warn("Autoplay blocked.");
+        });
+      }
+  
+      musicControl.addEventListener('click', () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          musicControl.textContent = '🔊 Pause Music';
+        } else {
+          bgMusic.pause();
+          musicControl.textContent = '🔈 Play Music';
+        }
+      });
+    </script>
+</body>
+</html>
