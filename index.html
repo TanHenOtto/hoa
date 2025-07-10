@@ -11,9 +11,8 @@
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-image: url('https://res.cloudinary.com/doqkbp2n9/image/upload/v1752140104/20230123_194610_ictm2a.jpg');
+      background-image: url('https://res.cloudinary.com/doqkbp2n9/image/upload/v1752148592/517670772_1864650280749147_6559197095471290074_n_n2tmqz.jpg');
       background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
       overflow: hidden;
@@ -23,6 +22,11 @@
 
     body.submitted {
       background-image: url('https://res.cloudinary.com/doqkbp2n9/image/upload/v1752147752/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_o8kzvo.jpg');
+      background-repeat: no-repeat;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      transition: background-image 1s ease-in-out;
     }
 
     .overlay {
@@ -34,10 +38,6 @@
       transition: background-color 1s ease-in-out;
     }
 
-    body.submitted .overlay {
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-
     .container {
       position: relative;
       z-index: 1;
@@ -47,18 +47,18 @@
     }
 
     form {
-      background-color: rgba(255, 255, 255, 0.95);
       padding: 30px;
       border-radius: 16px;
       text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,0.2);
       animation: fadeIn 1s ease-out;
+      margin-top: 200px;
     }
 
     form h2 {
       font-family: 'Dancing Script', cursive;
       font-size: 28px;
-      color: #2c3e50;
+      color: #ffffff;
       margin-bottom: 20px;
     }
 
